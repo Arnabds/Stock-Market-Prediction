@@ -188,6 +188,58 @@ At the end, we forced to do elestic net a grid search with l1 ratio 0.5. Here al
 
 <h3 id="Extra">Extra</h3>
 We have also fitted SVC and Neural net. In neural net we got 91% to 100% accuracy over cross validation and in SVC we get 100% accuracy all the time.
+<h4 id="XGBoost">XGBoost</h4>
+
+```
+  results = []
+
+# Retrieve the best model from cross-validation
+best_xgb_model = xgb_cv.best_estimator_
+best_mse = -xgb_cv.best_score_
+
+# Fit the best model to the entire training and validation set
+best_xgb_model.fit(X_train_val, y_train_val)
+
+# Predictions on the training data
+y_pred_train = best_xgb_model.predict(X_train_val)
+residuals = y_train_val - y_pred_train
+
+# Calculate the sample size and sum of squared errors
+n = len(y_train_val)  # Sample size
+sse = np.sum(residuals**2)
+
+# Approximate number of parameters for XGBoost (trees * depth)
+p = best_xgb_model.get_params()['n_estimators'] * best_xgb_model.get_params()['max_depth']
+
+# Calculate AIC, BIC, and AICc
+aic = n * np.log(sse / n) + 2 * p
+bic = n * np.log(sse / n) + p * np.log(n)
+aicc = aic + (2 * p * (p + 1)) / (n - p - 1)
+
+# Store results in a dictionary
+results.append({
+    'Model': 'XGBoost',
+    'Best Parameters': xgb_cv.best_params_,
+    'Best MSE': best_mse,
+    'AIC': aic,
+    'BIC': bic,
+    'AICc': aicc
+})
+
+# Convert results list to DataFrame for display
+results_df = pd.DataFrame(results)
+
+# Display the table
+print("Grid Search Results with MSE, AIC, BIC, and AICc for XGBoost:")
+print(results_df)
+```
+
+```
+Grid Search Results with MSE for XGBoost Regression:
+     Model                                    Best Parameters  Best MSE
+0  XGBoost  {'colsample_bytree': 0.8, 'gamma': 0, 'learnin...  0.021993
+```
+
 
 <h4 id="SVC">SVC</h4>
 
@@ -255,24 +307,24 @@ Mean Cross-Validation Score: 0.972929292929293
 
 > In EDA we saw the inputs are highly correlated and that's why they are not very good at separating Y=0,1. The KMeans k2=0,1 worked well and it was not only giving us a better hue in the scatter plot but also matched well with Y=0,1.
 >
-> We can see that V07, V15, X10 are statistically significant features. It seems the 3rd approach to extracting patterns from the signals is more useful.
+> We can see some statistically significant features. It seems that financial factor and using other stock market prices to extracting patterns from the random walk is more useful.
 >
 >Because they are correlated to each other we need the help of PCA to evaluate effective feature variables and at the end, we saw that there are 11 to 13 such PCA features that separate the data well and, hence, effective.
 >
->The best logistic regression model turns out to be the elastic net with even mixed with ridge and lasso with 31 zero coefficients. We are getting 83-84% accuracy here. The best model in training turns out to be the best in prediction as well. In the end we saw if we use SVC then we are in fact getting 100% accuracy. I have also included Neural Net in the supporting document where we get 97% accuracy.
+>The best regression and logistic regression model turns out to be the elastic net with even mixed with ridge and lasso with 31 zero coefficients. We are getting 80-100% accuracy here. The best model in training turns out to be the best in prediction as well. In the end we saw if we use "     " then we are in fact getting the best accuracy. I have used XGBoost, Neural Net, LSTM here.
 
 
 <h2 id="Things-to-answer-and-to-be-updated-next">Things to answer and to be updated next</h2>
 
 This was my second project and more things are yet to be learned and improved. Data Science/machine learning is a journey like life
-1. Removing skew with data-independent approach
-2. How to choose optimal no PCA
-3. More advanced methods after logistic regression.
+1. Algorithmic Trading
+2. Deep learning
+3. finding out more financial features
 
 
 <h2 id="References">References</h2>
 
-1. University of Pittsburgh course CMPINF 2100
+1. Erdos
 2. VSCode, Python
 
 💻
