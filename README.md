@@ -26,6 +26,7 @@ A foundational step in predicting the stock market of a company by leveraging st
         <li><a href="#Performance">Performance</a></li>
         <li><a href="#Extra">Extra</a>
             <ul>
+              <li><a href="#XGBoost">XGBoost</a></li>
               <li><a href="#SVC">SVC</a></li>
               <li><a href="#Neural-Net">Neural Net</a></li>
             </ul>
