@@ -112,14 +112,14 @@ We have divided our project into 6 parts: ***EDA and Preprocessing, Cluster Anal
 
 <h3 id="EDA-and-Preprocessing">EDA and Preprocessing</h3>
 
-![Vibrational Data](/images/kde.png)
+![Stock Data](/images/kde.png)
 Hence we needed to use log transformation to remove skewness as we will use KMeans later on. We have also observed that the input features are correlated. E.g., successive V inputs are positively correlated which prepares a good stage for PCA.
-![Vibrational Data](/images/corr.png)
+![Stock Data](/images/corr.png)
 
 
 <h3 id="Cluster-Analysis">Cluster Analysis</h3>
 We have also observed that the input features are correlated. Hence when we applied PCA the correlation got removed. We chose the first 11 PCAs to be a useful one. Then we fitted KMeans and chose 2 clusters by knee bend plot. We have also used hierarchical clustering and went with 2 clusters.
-![Vibrational Data](/images/hclust.png)
+![Stock Data](/images/hclust.png)
 
 <h3 id="Models">Models</h3>
 We have fitted 7 models from linear additive to interaction. Calculated its coefficients and showed statistical significance. We decided on the good models over the number of coefficients, threshold, Accuracy, Sensitivity, Specificity, FPR, and ROC_AUC. This was based on a test dataset. 
