@@ -321,6 +321,7 @@ This was my second project and more things are yet to be learned and improved. D
 1. Algorithmic Trading
 2. Deep learning
 3. finding out more financial features
+4. Congressional trading
 
 
 <h2 id="References">References</h2>
