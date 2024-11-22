@@ -1,21 +1,20 @@
 # Stock-Market-Prediction
-A baby step of predicting stock market of a company using stock market prices of other companies and commodities.
-
+A foundational step in predicting the stock market of a company by leveraging stock market prices of other companies and related commodities.
 
 # Asset Monitoring and Predictive Maintenance
 ### Sponsored by FPoliSolutions, LLC
 
 ## Table of Contents
 
-<li><a href="#Project-details">Project details</a></li>
-<li><a href="#Pre-analysis">Pre analysis</a></li>
+<li><a href="#Project-details">Project Details</a></li>
+<li><a href="#Pre-analysis">Pre-analysis</a></li>
 <ul>
     <li><a href="#Time-Series">Time Series</a></li>
-    <li><a href="#Financial-Factors">Financial-Factors</a></li>
+    <li><a href="#Financial-Factors">Financial Factors</a></li>
 <ul>
 <li><a href="#Data">Data</a></li>
-<li><a href="#Computer-experiments-to-study-patterns">Computer experiments to study patterns</a></li>
-<li><a href="#Project-instructions">Project instructions</a></li>
+<li><a href="#Computer-experiments-to-study-patterns">Computer Experiments to Study Patterns</a></li>
+<li><a href="#Project-instructions">Project Instructions</a></li>
 <ul>
   <li>
     <a href="#Steps">Steps</a>
@@ -35,115 +34,74 @@ A baby step of predicting stock market of a company using stock market prices of
   </li>
 </ul>
 <li><a href="#Summary">Summary</a></li>
-<li><a href="#Things-to-answer-and-to-be-updated-next">Things to answer and to be updated next</a></li>
+<li><a href="#Things-to-answer-and-to-be-updated-next">Things to Answer and Update Next</a></li>
 <li><a href="#References">References</a></li>
 
-    
 ---
 
-<h2 id="Project-details">Project details</h2>
-We were interested to predict stock market price which is usually highly volatile and random. One of our main challenge for this project was the lack of data as we know that financial data is highly expensive and we do not get any predictors. We did some pre analysis and we created our data.
+<h2 id="Project-details">Project Details</h2>
+This project aims to predict stock market prices, an inherently volatile and complex task. A primary challenge was the scarcity of readily available data since financial data is often expensive and lacks predictor variables. Through extensive pre-analysis, we developed and refined our dataset.
 
 <h3 id="Pre-analysis">Pre-analysis</h3>
-We studied time series of amazon stock market and commodity gold. We have imported the data from yahoo finance and did time series analysis. When we checked the data it only consists of Volume, High, low, open and close prices. We only considered the close price as time series and tried to fit regression to estimate trend and then removing trend we played with residual to understand the stationarity. We performed residual analysis, Ljung box test and ADF Fuller test. It was not stationry which was evident and hence we tried differencing and made it stationary. Everntually we went ahead towards ARIMA model. It turned out to be ARIMA(1,1,2)(Gold) and ARIMA (1,2,0)(Amazon). Here we didn't predict variation using GARCH so that will be the next step now. We used Time series just to have some ideas about the stock market data and understand the difficulties of making a prediction.
+We began by studying the time series of Amazon stock prices and gold commodity prices. Using data imported from Yahoo Finance, we performed time series analyses. The available data included `Volume`, `High`, `Low`, `Open`, and `Close` prices, but we focused solely on `Close` prices for analysis.
+
+We fitted regression models to estimate trends and removed these trends to analyze residuals for stationarity. Residual analyses involved the Ljung-Box test and the ADF Fuller test, revealing non-stationarity. Differencing was applied to achieve stationarity, paving the way for ARIMA modeling. The best-fitting models were ARIMA(1,1,2) for gold and ARIMA(1,2,0) for Amazon. Although we did not explore GARCH models for volatility prediction at this stage, this is a next step. This preliminary analysis helped us understand the challenges of stock market prediction.
 
 <h3 id="Financial-Factors">Financial Factors</h3>
-We realized that in the data we get from yfinance is recorded perday which is not granular enough to give a meaningful contribution and except volume everything had multicollinearity issues so we needed to extract features from there and we calculated Gain, Loss, Average Gain, Average Loss, RSI, Simple Moving Average, Exponential Moving Average, Rate of Change and Price Volume Trend. 
-
+Given the daily granularity of Yahoo Finance data, the predictors derived from the raw data were insufficiently meaningful due to multicollinearity. To address this, we engineered the following financial factors:
+- **Gain**
+  - Average Gain
+- **Loss**
+  - Average Loss
+- **RSI (Relative Strength Index)**
+- **Moving Averages**
+  - Simple Moving Average
+  - Exponential Moving Average
+- **Rate of Change**
+- **Price Volume Trend**
 
 <h2 id="Data">Data</h2>
-We realized that we need to create our own data for it. We mutually decide that we will work with automobile companies and with some market research we figured some stock market that are related to each other. We are looking for stocks which are related to Ford, Toyota motors.
-- Ford, the second-largest automaker in the US, has a number of suppliers, including many famous indirect suppliers.
-- Major suppliers of airbags include Autoliv, while Warn Industries supplies axle assemblies and Flex-N-Gate Seeburn supplies door hinges and arms. 
-- Indirect suppliers include FedEx, Union Pacific, and Roush. 
+To enhance the predictive power, we created a custom dataset focusing on the automotive sector. After thorough market research, we identified related stocks linked to Ford and Toyota Motors. 
 
-Toyota has many suppliers, including: 
-- Denso: A major supplier of automotive parts and chips, and a leading supplier to Toyota. Denso receives about half of its revenue from Toyota. 
-- Aisin Seiki Co. A supplier of automobile components and systems. 
-- Microchip Technology: A supplier of infotainment systems for Toyota and other manufacturers. 
-- Johnson Controls: A supplier of seats and interior parts. 
-- Takata Corporation: A supplier of seatbelts, airbags, and child restraint systems. 
-- Dunlop Goodyear Tires, Ltd. A supplier of tires. 
-- TRW Automotive Japan Co., Ltd. A supplier of steering systems and suspension parts. 
-- TPR Co., Ltd. A supplier of piston rings and cylinder liners. 
-- T. RAD Co., Ltd. A supplier of radiators, oil coolers, and intercoolers. 
-- Topre Corporation: A supplier of reinforced bumpers and center pillars. 
-- Toyo Quality One Corporation: A supplier of molded urethane foam (seat pads). 
-- Topy Industries, Limited: A supplier of automotive disc wheels.
-We also used the currency exchange rates.
+**Ford Suppliers:**
+- Major suppliers: Autoliv (airbags), Warn Industries (axle assemblies), and Flex-N-Gate Seeburn (door hinges and arms).
+- Indirect suppliers: FedEx, Union Pacific, and Roush.
 
-Then drew correlation plot with all of them using the close data and chose the comapnies which had absolute correlation value than 0.4 then we narrowed down our search to fewer companies then we use Granger Causality on the remaining companies and narrowed it down further to 'CADUSD=X', 'GM', 'JCI', 'TM', 'TRYUSD=X', '^IXIC','F'. Finally, we got our final list of companies on which we wanna use the financial factors to get the feature variables, one thing to remember if we would have taken all the companies, then implementing the financial factors on all of them it would have been a high dimensional data, which would be tedious to work with so we had to narrow down our search. Then we cleaned our data because we actually derive the financial factors which created some missing observations because we calculated moving average and exponential moving average which does not record some of the initial and last observation values because of the rolling points so we had to drop all those observations and make it clean then we prepared the data for regression part, logistic regression part as well as the other machine learning models, for example, random forest, Gradient boosting, support vector machine, neural network, etc and then we finally saved our data which is prepared to used in a modeling.
+**Toyota Suppliers:**
+- Denso, Aisin Seiki Co., Microchip Technology, Johnson Controls, Takata Corporation, Dunlop Goodyear Tires, TRW Automotive Japan Co., TPR Co., T. RAD Co., Topre Corporation, Toyo Quality One Corporation, Topy Industries Limited.
 
+We also included currency exchange rates in the dataset.
 
+To refine our feature selection, we:
+1. Drew a correlation matrix of closing prices.
+2. Selected stocks with an absolute correlation > 0.4.
+3. Applied Granger Causality to further narrow the list.
 
- 
-- listed some of the 
-- The data are provided in the CSV file **training_data.csv**.
-  - The columns correspond to different patterns extracted from the data.
-  - The column naming convention indicates the feature extraction approach used to generate the variables.
-  - X – Approach 1 at extracting patterns from the signals
-  - Z – Approach 2 at extracting patterns from the signals
-  - V – Approach 3 at extracting patterns from the signals
-- The column letter is followed by a number. Each feature extraction approach includes numerous patterns.
-  - Approach 1 has 25 columns: X01 through X25
-  - Approach 2 has 9 columns: Z01 through Z09
-  - Approach 3 has 29 columns: V01 through V29
-- The output is named Y and is a binary variable.
-- The output is encoded as:
-  - Y = 1 is a FAILURE
-  - Y = 0 is NOT a failure
-- The models must predict the PROBABILITY of FAILURE given the INPUT patterns (the X, Z, and V columns).
+The final set of features included: `'CADUSD=X'`, `'GM'`, `'JCI'`, `'TM'`, `'TRYUSD=X'`, `'^IXIC'`, and `'F'`.
 
+<h3 id="Data Cleaning and Preparation">Data Cleaning and Preparation</h3>
+Financial factors introduced missing observations (e.g., from rolling calculations like moving averages). We removed these rows to ensure a clean dataset. This prepared dataset was used for regression, logistic regression, and advanced machine learning models, including random forests, gradient boosting, SVMs, and neural networks. The cleaned data was saved for further modeling.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 <h2 id="Computer-experiments-to-study-patterns">Computer experiments to study patterns</h2>
-> Computer simulations can help overcome certain challenges because the simulations are based on physical theory and engineering best practices.
+> Correaltion plot
 >
-> Simulations are used to generate supplemental data of possible failure states.
->
-> The simulated data can be added to the existing set of real data to help train more accurate models!
->
-> The simulated data consist of higher failure rates compared to real data, because the simulations are specifically designed to induce failures.
->
-> The simulations generate vibrational data consistent with real vibrational measurements. Thus, the simulations generate high-frequency time series
-signals! Patterns can be extracted from those high-frequency signals.
-> > How those patterns are extracted from the signals were not discussed here. The patterns are provided to us.
->
-> **We will work with the simulated patterns. You will train models to CLASSIFY a simulated failure given the simulated patterns.**
-
+> Granger Causality
 
 
 
 
 <h2 id="Project-instructions">Project instructions</h2>
-- This project has 2 primary goals:
-  - Train a model that accurately classifies failure (Y=1).
-  - Identify the most important inputs that influence the failure probability.
-- We will need to appropriately explore the inputs BEFORE training models.
-  - Make sure you study the RELATIONSHIPS between the inputs!
+- This project has 3 primary goals:
+  - Train a model that accurately predicts the closing price value.
+  - Train a model that accurately classify whether the stock closing price will go up or down the next day.
+  - Invest fake money in investopedia to check our model's prediction performance.
 - We must use an appropriate validation scheme to select the best model!
 
 
 <h2 id="Steps">Steps</h2>
-We have divided our project into 6 parts: ***EDA and Preprocessing, Cluster Analysis, Models, Performance, Prediction, and Bonus***. We summed up the summaries in Mains. You will get these files with codes in jupyter notebook and HTML folders in Github. Introduction has been given so far. Let us start with the EDA.
+We have divided our project into 6 parts: ***EDA and Preprocessing, Cluster Analysis, Models, Performance, Prediction, and Testing***. We divided our work in groups. You will get these files with codes in jupyter notebook and HTML folders in Github. Introduction has been given so far. Let us start with the EDA.
 
 |EDA and Preprocessing|Cluster Analysis|Models|Performance|Prediction|Bonus|
 |--------|--------|--------|--------|--------|--------|
@@ -153,18 +111,10 @@ We have divided our project into 6 parts: ***EDA and Preprocessing, Cluster Anal
 
 
 <h3 id="EDA-and-Preprocessing">EDA and Preprocessing</h3>
-We can see that the input features are bell-shaped but some of them are left or right-skewed e.g., Z07, Z09, and V02 are left-skewed and V28, V29, and Z08 are right-skewed. We can also see minor bi-modality with X19.
+
 ![Vibrational Data](/images/kde.png)
 Hence we needed to use log transformation to remove skewness as we will use KMeans later on. We have also observed that the input features are correlated. E.g., successive V inputs are positively correlated which prepares a good stage for PCA.
 ![Vibrational Data](/images/corr.png)
-
-- As we discussed before that we have applied log transformation to remove skew as we will apply the logistic regression model later on.
-  - Logistic regression assumes that the features follow a normal distribution (or are at least symmetric).
-  - Algorithms that do not make explicit assumptions about the distribution of the data, such as decision trees and random forests, performed better on data that is more symmetric. This is because extreme values (which are more common in skewed data) can affect the model's ability to find the best splits and, consequently, its overall performance.
-  - Highly skewed data had a long range of extreme values that make scaling more difficult. Removing skewness through transformations (like logarithmic, square root, or Box-Cox transformations) made feature scaling more effective.
-- We have also used standardization
-  - gradient descent-based algorithms (used in neural networks, linear regression, logistic regression, etc.) converge faster when the features are standardized.
-  - Support Vector Machines (SVMs), k-nearest neighbors (k-NN), and principal component analysis (PCA) are also sensitive to the scale of the data, as they rely on distance calculations that can be skewed if one feature's range dominates others.
 
 
 <h3 id="Cluster-Analysis">Cluster Analysis</h3>
