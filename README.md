@@ -164,9 +164,50 @@ We have fitted 4 models from linear regression, linear regression with PCA, line
             -elastic_net_cv.best_score_
         ]
     })
+        Grid Search Results with MSE for Each Model:
+            Model                   Best Parameters  Best MSE
+    0       Ridge                   {'alpha': 10.0}  0.023315
+    1       Lasso                   {'alpha': 0.01}  0.020247
+    2  ElasticNet  {'alpha': 0.01, 'l1_ratio': 0.2}  0.018912
+    Best model: ElasticNet(alpha=0.01, l1_ratio=0.2), MSE: 0.01891209280316799
 ```
 ```
-Similarly for logistic regression and other regression models with PCA. For XGBoost we have
+Similarly for logistic regression and other regression models with PCA. 
+
+```
+    # For logistic regression
+    Unseen Test Accuracy (3 days): 0.6666666666666666
+
+    # for regression PCA
+        Grid Search Results with MSE for Each Model:
+            Model                  Best Parameters  Best MSE
+    0       Ridge                  {'alpha': 10.0}  0.019840
+    1       Lasso                   {'alpha': 0.1}  0.034708
+    2  ElasticNet  {'alpha': 0.1, 'l1_ratio': 0.2}  0.030487
+    Best model: Ridge(alpha=10.0), MSE: 0.019839773849628435
+
+    # for logistic regression PCA
+
+    Grid Search Results with Accuracy for Logistic Regression:
+                    Model                                    Best Parameters  \
+    0  LogisticRegression  {'C': 0.1, 'penalty': 'l1', 'solver': 'libline...   
+    
+       Best Accuracy  
+    0       0.533333  
+    Best model: LogisticRegression(C=0.1, penalty='l1', solver='liblinear'), Accuracy: 0.5333333333333333
+    Unseen Test Accuracy: 0.6666666666666666
+    
+    Classification Report:
+                  precision    recall  f1-score   support
+    
+               0       0.67      1.00      0.80         2
+               1       0.00      0.00      0.00         1
+    
+        accuracy                           0.67         3
+       macro avg       0.33      0.50      0.40         3
+    weighted avg       0.44      0.67      0.53         3
+```
+For XGBoost we have
 ```
     # Step 3: Split data - keep the last 1 week as an unseen test set
 split_index = len(X_pca) - 7
@@ -200,6 +241,12 @@ results = pd.DataFrame({
     'Best Parameters': [xgb_cv.best_params_],
     'Best MSE': [-xgb_cv.best_score_]  # Convert negative MSE back to positive
 })
+
+# For XGBoost prediction
+Unseen Test MSE (XGBoost): 0.023049184263072675
+
+# For XGBoost PCA prediction
+Unseen Test MSE: 0.037972127935972814
 ```
 
 <h3 id="Prediction">Prediction</h3>
