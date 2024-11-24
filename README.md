@@ -114,7 +114,7 @@ We have divided our project into 6 parts: ***EDA and Preprocessing, Cluster Anal
 <h3 id="EDA-and-Preprocessing">EDA and Preprocessing</h3>
 
 ![Stock Data](/images/kde.png)
-Hence we needed to use log transformation to remove skewness as we will use KMeans later on. We have also observed that the input features are correlated. E.g., successive V inputs are positively correlated which prepares a good stage for PCA.
+Fill it.
 ![Stock Data](/images/corr.png)
 
 
