@@ -123,21 +123,84 @@ We have also observed that the input features are correlated. Hence when we appl
 ![Stock Data](/images/hclust.png)
 
 <h3 id="Models">Models</h3>
-We have fitted 7 models from linear additive to interaction. Calculated its coefficients and showed statistical significance. We decided on the good models over the number of coefficients, threshold, Accuracy, Sensitivity, Specificity, FPR, and ROC_AUC. This was based on a test dataset. 
+We have fitted 4 models from linear regression, linear regression with PCA, linear logistic regression, linear logistic regression with PCA all with regularization, XGBoost, XGBoost PCA.
 ```
-    formula_linear = 'Y ~ ' + ' + '.join(df_standardized_transformed.drop(columns= 'Y').columns)
-    mod_03 = smf.ols(formula=formula_linear, data=df_standardized_transformed).fit()
-    mod_03.params
+    
+    # Step 3: Split data - keep the last 1 week as an unseen test set
+    split_index = len(X_transformed) - 7
+    X_train_val, X_unseen_test = X_transformed[:split_index], X_transformed[split_index:]
+    y_train_val, y_unseen_test = y[:split_index], y[split_index:]
+    
+    # Step 4: Set up parameter grids for hyperparameter tuning
+    ridge_params = {'alpha': [0.1, 1.0, 10.0, 100.0]}
+    lasso_params = {'alpha': [0.01, 0.1, 1.0, 10.0]}
+    elastic_net_params = {'alpha': [0.01, 0.1, 1.0, 10.0], 'l1_ratio': [0.2, 0.5, 0.8]}
+    
+    # Initialize models
+    ridge = Ridge()
+    lasso = Lasso()
+    elastic_net = ElasticNet()
+    
+    # TimeSeriesSplit for cross-validation
+    tscv = TimeSeriesSplit(n_splits=5)
+    
+    # GridSearchCV with TimeSeriesSplit
+    ridge_cv = GridSearchCV(ridge, ridge_params, scoring='neg_mean_squared_error', cv=tscv)
+    lasso_cv = GridSearchCV(lasso, lasso_params, scoring='neg_mean_squared_error', cv=tscv)
+    elastic_net_cv = GridSearchCV(elastic_net, elastic_net_params, scoring='neg_mean_squared_error', cv=tscv)
+    
+    # Fit models on training and validation set
+    ridge_cv.fit(X_train_val, y_train_val)
+    lasso_cv.fit(X_train_val, y_train_val)
+    elastic_net_cv.fit(X_train_val, y_train_val)
+
+    # Step 5: Collect MSE and best parameters for each model in a table
+    results = pd.DataFrame({
+        'Model': ['Ridge', 'Lasso', 'ElasticNet'],
+        'Best Parameters': [ridge_cv.best_params_, lasso_cv.best_params_, elastic_net_cv.best_params_],
+        'Best MSE': [
+            -ridge_cv.best_score_,  # Convert negative MSE back to positive
+            -lasso_cv.best_score_,
+            -elastic_net_cv.best_score_
+        ]
+    })
 ```
 ```
-    # Apply PCA to the transformed inputs and create all pairwise interactions between the PCs.
-    df_pca_transformed_int = df_pca_transformed.iloc[:, :11].copy()
-    df_pca_transformed_int['Y'] = df_transformed.Y
-    formula_int = 'Y ~ ' + ' ( '  + ' + '.join(df_pca_transformed_int.drop(columns= 'Y').columns) + ' ) ** 2'
-    mod_07 = smf.ols(formula=formula_int, data=df_pca_transformed_int).fit() 
-    mod_07.params
+Similarly for logistic regression and other regression models with PCA. For XGBoost we have
 ```
-We chose model 3 and model 7 from there which are all linear additive features from the original data set and model 7 is the interaction features with PCAs. They have 64 and 67 coefficients respectively.
+    # Step 3: Split data - keep the last 1 week as an unseen test set
+split_index = len(X_pca) - 7
+X_train_val, X_unseen_test = X_pca[:split_index], X_pca[split_index:]
+y_train_val, y_unseen_test = y[:split_index], y[split_index:]
+
+# Step 4: Set up parameter grid for XGBoost hyperparameter tuning
+xgb_params = {
+    'n_estimators': [200, 300, 400],
+    'learning_rate': [0.01, 0.005],
+    'max_depth': [3, 5, 7],
+    'subsample': [0.6, 0.8, 1.0],
+    'colsample_bytree': [0.6, 0.8, 1.0],
+    'gamma': [0, 0.1, 0.2],
+    'min_child_weight': [1, 5, 10]
+}
+
+# Initialize the XGBoost Regressor (without early stopping here)
+xgb_reg = XGBRegressor(objective='reg:squarederror', random_state=42)
+
+# TimeSeriesSplit for cross-validation
+tscv = TimeSeriesSplit(n_splits=5)
+
+# GridSearchCV with TimeSeriesSplit
+xgb_cv = GridSearchCV(xgb_reg, xgb_params, scoring='neg_mean_squared_error', cv=tscv)
+xgb_cv.fit(X_train_val, y_train_val)
+
+# Step 5: Collect MSE and best parameters for XGBoost in a table
+results = pd.DataFrame({
+    'Model': ['XGBoost with PCA'],
+    'Best Parameters': [xgb_cv.best_params_],
+    'Best MSE': [-xgb_cv.best_score_]  # Convert negative MSE back to positive
+})
+```
 
 <h3 id="Prediction">Prediction</h3>
 Recall we had only training data with us. Hence, we chose model 3 and model 7 to check them on the test dataset that was created by us manually in the input grids X01, Z01, and Z04. Then we had prediction in model 3 we drew some line prediction plots for model 3 with x='X01', y='pred_probability_03', hue='Z01', and col='Z04'.
