@@ -248,7 +248,8 @@ Unseen Test MSE: 0.037972127935972814
 ```
 
 <h3 id="Prediction">Prediction</h3>
-In all the model we got good results. Recall that it is a stock market data which tends to be whimsical. So it will be difficult to get the accurate prediction but we can observe the classification with some nice accuracy. We have also checked our model with backtesting and forward validation. Here is the picture of some of our predictions. You will see that we can make simple regression stronger enough to make good prediction. 
+In all the model we got good results. Recall that it is a stock market data which tends to be whimsical. So it will be difficult to get the accurate prediction but we can observe the classification with some nice accuracy. Next, we evaluated performance with Pipelines fitting logistic regression along with regularization lasso, ridge, and elastic net. We varied the norm ratio as well and recorded our prediction accuracy. We have also checked our model with backtesting and forward validation. Here is the picture of some of our predictions. You will see that we can make simple regression stronger enough to make good predictions.
+
 
 ![XGBoost regression](/images/XGboost_reg.png)
 
@@ -257,7 +258,23 @@ In all the model we got good results. Recall that it is a stock market data whic
 ![Regression](/images/reg.png)
 
 <h3 id="Performance">Performance-Backtesting</h3>
-Next, we evaluated performance with Pipelines fitting logistic regression along with regularization lasso, ridge, and elastic net. We varied the norm ratio as well and recorded our prediction accuracy.
+
+---
+
+| **Models**              | **Subparts**                                | **Accuracy**        |
+|--------------------------|---------------------------------------------|---------------------|
+| Logistic Regression      | - Additive Model                           | Accuracy: 85.5%     |
+|                          | - Interaction Model                        | Accuracy: 86.9%     |
+|                          | - Ridge Regularization                     | Accuracy: 89.8%     |
+|                          | - Lasso Regularization                     | Accuracy: 85.5%     |
+|                          | - Elastic Net Regularization               | Accuracy: 85.5%     |
+| Support Vector Classifier| - Linear Kernel                            | Accuracy: 84.0%     |
+|                          | - Radial Basis Function Kernel             | Accuracy: 85.5%     |
+| Neural Network           | - Fully Connected (2 Layers)               | Accuracy: 87.5%     |
+|                          | - Fully Connected (3 Layers with Dropout)  | Accuracy: 88.5%     |
+
+---
+
 
 
 <h3 id="Extra">Extra</h3>
@@ -406,5 +423,3 @@ This was my second project and more things are yet to be learned and improved. D
 
 
 
-  
- 
