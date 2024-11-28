@@ -112,6 +112,7 @@ We have divided our project into 6 parts: ***EDA and Preprocessing, Cluster Anal
 
 
 <h3 id="EDA-and-Preprocessing">EDA and Preprocessing</h3>
+
 ![Overall model with bollinger band](/images/Overall_model_with_bollinger_band.png)
 
 
