@@ -253,7 +253,9 @@ In all the model we got good results. Recall that it is a stock market data whic
 
 ![XGBoost regression](/images/XGboost_reg.png)
 
+
 ![XGBoost regression pca](/images/XGBoost_reg_pca.png)
+
 
 ![Regression](/images/reg.png)
 
