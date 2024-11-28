@@ -112,15 +112,12 @@ We have divided our project into 6 parts: ***EDA and Preprocessing, Cluster Anal
 
 
 <h3 id="EDA-and-Preprocessing">EDA and Preprocessing</h3>
-
-![Stock Data](/images/kde.png)
-Fill it.
-![Stock Data](/images/corr.png)
+![Overall model with bollinger band](/images/Overall-model-with-bollinger-band.png)
 
 
-<h3 id="Cluster-Analysis">Cluster Analysis</h3>
-We have also observed that the input features are correlated. Hence when we applied PCA the correlation got removed. We chose the first 11 PCAs to be a useful one. Then we fitted KMeans and chose 2 clusters by knee bend plot. We have also used hierarchical clustering and went with 2 clusters.
-![Stock Data](/images/hclust.png)
+This is the correlation plot with all the finally selected features.
+![Correlation plot](/images/corr.png)
+
 
 <h3 id="Models">Models</h3>
 We have fitted 4 models from linear regression, linear regression with PCA, linear logistic regression, linear logistic regression with PCA all with regularization, XGBoost, XGBoost PCA.
@@ -250,52 +247,17 @@ Unseen Test MSE: 0.037972127935972814
 ```
 
 <h3 id="Prediction">Prediction</h3>
-Recall we had only training data with us. Hence, we chose model 3 and model 7 to check them on the test dataset that was created by us manually in the input grids X01, Z01, and Z04. Then we had prediction in model 3 we drew some line prediction plots for model 3 with x='X01', y='pred_probability_03', hue='Z01', and col='Z04'.
-![Vibrational Data](/images/pred1.png)
+In all the model we got good results. Recall that it is a stock market data which tends to be whimsical. So it will be difficult to get the accurate prediction but we can observe the classification with some nice accuracy. We have also checked our model with backtesting and forward validation. Here is the picture of some of our predictions. You will see that we can make simple regression stronger enough to make good prediction. 
 
-Next, we had prediction in model 7 we drew some line prediction plots for model 7 with x='pc01', y='pred_probability_07', hue='pc04', col='pc11'.
-![Vibrational Data](/images/pred2.png)
+![XGBoost regression](/images/XGboost_reg.png)
 
-<h3 id="Performance">Performance</h3>
-Next, we evaluated performance with Pipelines fitting logistic regression along with regularization lasso, ridge, and elastic net. We did not restrict ourselves strictly to lasso or ridge, rather went for an elastic net. From the l1 ratio, we observed that it is leaning towards lasso. Hence, we calculated performance with lasso and we got the highest score as 84%.
+![XGBoost regression pca](/images/XGBoost_reg_pca.png)
 
-```
-  # model 7-Apply PCA to the transformed inputs and create all pairwise interactions between the PCs
-  pc_interact_lasso_search_grid.best_score_
+![Regression](/images/reg.png)
 
-0.8387878787878786
-```
+<h3 id="Performance">Performance-Backtesting</h3>
+Next, we evaluated performance with Pipelines fitting logistic regression along with regularization lasso, ridge, and elastic net. We varied the norm ratio as well and recorded our prediction accuracy.
 
-At the end, we forced to do elestic net a grid search with l1 ratio 0.5. Here also we got 84% accurate with 31 features coefficient zero. Hence we call it the best.
-
- ```
-  enet_to_fit = LogisticRegression(penalty='elasticnet', solver='saga',
-                            random_state=202, max_iter=25001, fit_intercept=True)
-  pc_interact_enet_wflow = Pipeline( steps=[('std_inputs', StandardScaler() ), 
-                                           ('pca', PCA() ), 
-                                           ('make_pairs', make_pairs), 
-                                           ('enet', enet_to_fit )] )
-  enet_grid = {'pca__n_components': [3, 5, 7, 9, 11, 13, 15, 17],
-             'enet__C': np.exp( np.linspace(-10, 10, num=17)),
-             'enet__l1_ratio': np.linspace(0, 1, num=3)}
-  pc_df_enet_search = GridSearchCV(pc_interact_enet_wflow, param_grid=enet_grid, cv=kf)
-  pc_df__enet_search_results = pc_df_enet_search.fit( x_train_transformed, y_train_transformed )
-  #The optimal value for C and no. of pca components is 
-  pc_df__enet_search_results.best_params_
-  pc_df__enet_search_results.best_score_
-0.8387878787878786
-```
-```
-0.8387878787878786
-```
-```
-  coef = pc_df__enet_search_results.best_estimator_.named_steps['enet'].coef_
-  empty_elements = coef[coef == 0]
-  empty_elements.size
-```
-```
-31
-```
 
 <h3 id="Extra">Extra</h3>
 We have also fitted SVC and Neural net. In neural net we got 91% to 100% accuracy over cross validation and in SVC we get 100% accuracy all the time.
