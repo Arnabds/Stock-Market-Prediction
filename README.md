@@ -259,22 +259,49 @@ In all the model we got good results. Recall that it is a stock market data whic
 
 <h3 id="Performance">Performance-Backtesting</h3>
 
-Here's the updated table with an **Average Accuracy** column:
+Here's the updated table with an **Average Accuracy** column: for continuous prediction I have calculated accuracy based on next 7 days forecasting and for binary classification I forecasted for 3 days.
 
 ---
 
-| **Models**              | **Subparts**                                | **Accuracy**        | **Average Accuracy** |
-|--------------------------|---------------------------------------------|---------------------|-----------------------|
-| Regression      | - Additive Model                           | Accuracy: 85.5%     | **86.6%**            |
-|                          | - Interaction Model                        | Accuracy: 86.9%     |                       |
-|                          | - Ridge Regularization                     | Accuracy: 89.8%     |                       |
-|                          | - Lasso Regularization                     | Accuracy: 85.5%     |                       |
-|                          | - Elastic Net Regularization               | Accuracy: 85.5%     |                       |
-| Support Vector Classifier| - Linear Kernel                            | Accuracy: 84.0%     | **84.8%**            |
-|                          | - Radial Basis Function Kernel             | Accuracy: 85.5%     |                       |
-| Neural Network           | - Fully Connected (2 Layers)               | Accuracy: 87.5%     | **88.0%**            |
-|                          | - Fully Connected (3 Layers with Dropout)  | Accuracy: 88.5%     |                       |
-
+| **Models**               | **Subparts**                                                   | **Accuracy**        | **Average Accuracy** |
+|--------------------------|----------------------------------------------------------------|---------------------|-----------------------|
+| Regression               | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 100%      | **100%**            |
+|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     |                       |
+|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 89.8%     |                       |
+|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.5%     |                       |
+|--------------------------|----------------------------------------------------------------|---------------------|-----------------------|
+| Regression PCA           | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 100%      | **100%**            |
+|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     |                       |
+|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 89.8%     |                       |
+|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.5%     |                       |
+| XGBoost                  | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 100%      | **100%**            |
+|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     |                       |
+|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 89.8%     |                       |
+|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.5%     |                       |
+| XGBoost PCA              | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 100%      | **100%**            |
+|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     |                       |
+|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 89.8%     |                       |
+|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.5%     |                       |
+| Logistic Regression      | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 100%      | **100%**            |
+|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     |                       |
+|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 89.8%     |                       |
+|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.5%     |                       |
+| Logistic Regression PCA  | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 100%      | **100%**            |
+|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     |                       |
+|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 89.8%     |                       |
+|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.5%     |                       |
 ---
 
 
