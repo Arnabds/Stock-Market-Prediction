@@ -253,27 +253,27 @@ In all the model we got good results. Recall that it is a stock market data whic
 
 ![XGBoost regression](/images/XGboost_reg.png)
 
-
 ![XGBoost regression pca](/images/XGBoost_reg_pca.png)
 
-
-![Regression](/images/reg.png)
+![Regression](/images/Reg.png)
 
 <h3 id="Performance">Performance-Backtesting</h3>
 
+Here's the updated table with an **Average Accuracy** column:
+
 ---
 
-| **Models**              | **Subparts**                                | **Accuracy**        |
-|--------------------------|---------------------------------------------|---------------------|
-| Logistic Regression      | - Additive Model                           | Accuracy: 85.5%     |
-|                          | - Interaction Model                        | Accuracy: 86.9%     |
-|                          | - Ridge Regularization                     | Accuracy: 89.8%     |
-|                          | - Lasso Regularization                     | Accuracy: 85.5%     |
-|                          | - Elastic Net Regularization               | Accuracy: 85.5%     |
-| Support Vector Classifier| - Linear Kernel                            | Accuracy: 84.0%     |
-|                          | - Radial Basis Function Kernel             | Accuracy: 85.5%     |
-| Neural Network           | - Fully Connected (2 Layers)               | Accuracy: 87.5%     |
-|                          | - Fully Connected (3 Layers with Dropout)  | Accuracy: 88.5%     |
+| **Models**              | **Subparts**                                | **Accuracy**        | **Average Accuracy** |
+|--------------------------|---------------------------------------------|---------------------|-----------------------|
+| Regression      | - Additive Model                           | Accuracy: 85.5%     | **86.6%**            |
+|                          | - Interaction Model                        | Accuracy: 86.9%     |                       |
+|                          | - Ridge Regularization                     | Accuracy: 89.8%     |                       |
+|                          | - Lasso Regularization                     | Accuracy: 85.5%     |                       |
+|                          | - Elastic Net Regularization               | Accuracy: 85.5%     |                       |
+| Support Vector Classifier| - Linear Kernel                            | Accuracy: 84.0%     | **84.8%**            |
+|                          | - Radial Basis Function Kernel             | Accuracy: 85.5%     |                       |
+| Neural Network           | - Fully Connected (2 Layers)               | Accuracy: 87.5%     | **88.0%**            |
+|                          | - Fully Connected (3 Layers with Dropout)  | Accuracy: 88.5%     |                       |
 
 ---
 
