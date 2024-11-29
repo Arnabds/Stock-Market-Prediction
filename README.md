@@ -266,166 +266,37 @@ Here's the updated table with an **Average Accuracy** column: for continuous pre
 | **Models**               | **Subparts**                                                   | **Accuracy**        | **Average Accuracy** |
 |--------------------------|----------------------------------------------------------------|---------------------|-----------------------|
 | Regression               | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 100%      | **100%**            |
-|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     |                       |
-|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 89.8%     |                       |
-|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
-|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
-|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.5%     |                       |
-|--------------------------|----------------------------------------------------------------|---------------------|-----------------------|
+|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 42.9%     | **82.9%**                        |
+|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 100%     |                       |
+|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 71.4%     |                       |
+|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 100%     |                       |
+|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 100%     |                       |
 | Regression PCA           | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 100%      | **100%**            |
-|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     |                       |
-|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 89.8%     |                       |
-|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
-|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
-|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 71.4%     | **82.8%**                      |
+|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 85.7%     |                       |
+|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 71.4%     |                       |
+|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 100%     |                       |
+|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.7%     |                       |
 | XGBoost                  | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 100%      | **100%**            |
-|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     |                       |
-|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 89.8%     |                       |
-|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
-|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
-|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.5%     |                       |
+|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 42.9%     | **82.9%**                      |
+|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 100%     |                       |
+|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.7%     |                       |
+|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.7%     |                       |
+|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 100%     |                       |
 | XGBoost PCA              | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 100%      | **100%**            |
-|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     |                       |
+|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     | **86.6%**                      |
 |                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 89.8%     |                       |
 |                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
 |                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
 |                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.5%     |                       |
-| Logistic Regression      | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 100%      | **100%**            |
-|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     |                       |
-|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 89.8%     |                       |
-|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
-|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
-|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.5%     |                       |
+| Logistic Regression      | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 66.7%      | **66.7%**            |
 | Logistic Regression PCA  | - Elastic Net(alpha=0.01, l1_ratio=0.2)                        | Accuracy: 100%      | **100%**            |
-|                          | - Backtesting 1(Ridge(alpha=0.1))                              | Accuracy: 86.9%     |                       |
-|                          | - Backtesting 2(Ridge(alpha=0.1))                              | Accuracy: 89.8%     |                       |
-|                          | - Backtesting 3(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
-|                          | - Backtesting 4(Ridge(alpha=0.1))                             | Accuracy: 85.5%     |                       |
-|                          | - Backtesting 5(Elastic Net(alpha=0.01, l1_ratio=0.2))        | Accuracy: 85.5%     |                       |
 ---
 
 
-
-<h3 id="Extra">Extra</h3>
-We have also fitted SVC and Neural net. In neural net we got 91% to 100% accuracy over cross validation and in SVC we get 100% accuracy all the time.
-<h4 id="XGBoost">XGBoost</h4>
-
-```
-  results = []
-
-# Retrieve the best model from cross-validation
-best_xgb_model = xgb_cv.best_estimator_
-best_mse = -xgb_cv.best_score_
-
-# Fit the best model to the entire training and validation set
-best_xgb_model.fit(X_train_val, y_train_val)
-
-# Predictions on the training data
-y_pred_train = best_xgb_model.predict(X_train_val)
-residuals = y_train_val - y_pred_train
-
-# Calculate the sample size and sum of squared errors
-n = len(y_train_val)  # Sample size
-sse = np.sum(residuals**2)
-
-# Approximate number of parameters for XGBoost (trees * depth)
-p = best_xgb_model.get_params()['n_estimators'] * best_xgb_model.get_params()['max_depth']
-
-# Calculate AIC, BIC, and AICc
-aic = n * np.log(sse / n) + 2 * p
-bic = n * np.log(sse / n) + p * np.log(n)
-aicc = aic + (2 * p * (p + 1)) / (n - p - 1)
-
-# Store results in a dictionary
-results.append({
-    'Model': 'XGBoost',
-    'Best Parameters': xgb_cv.best_params_,
-    'Best MSE': best_mse,
-    'AIC': aic,
-    'BIC': bic,
-    'AICc': aicc
-})
-
-# Convert results list to DataFrame for display
-results_df = pd.DataFrame(results)
-
-# Display the table
-print("Grid Search Results with MSE, AIC, BIC, and AICc for XGBoost:")
-print(results_df)
-```
-
-```
-Grid Search Results with MSE for XGBoost Regression:
-     Model                                    Best Parameters  Best MSE
-0  XGBoost  {'colsample_bytree': 0.8, 'gamma': 0, 'learnin...  0.021993
-```
-
-
-<h4 id="SVC">SVC</h4>
-
-```
-  svm_model = SVC()
-
-  svm_param_grid = {
-      'C': [0.1, 1, 10, 100],
-      'kernel': ['linear', 'rbf', 'poly'],
-      'gamma': ['scale', 'auto']
-  }
-
-  svm_result=svm_grid_search.fit(x_train_transformed, y_train_transformed)
-  svm_result.best_params_
-
-  svm_result.best_score_
-  svm_cross_val_scores = cross_val_score(svm_grid_search.best_estimator_, x_train_transformed, y_train_transformed, cv=5, scoring='accuracy')
-  print("SVM Cross-Validation Scores:", svm_cross_val_scores)
-  print("SVM Mean Cross-Validation Score:", svm_cross_val_scores.mean())
-```
-
-```
-SVM Cross-Validation Scores: [1. 1. 1. 1. 1.]
-SVM Mean Cross-Validation Score: 1.0
-```
-
-<h4 id="Neural-Net">Neural Net</h4>
-
-```
-  # Appropriate model based on our task (regression/classification) is 
-  # RandomForestClassifier for classification(RandomForestRegressor for regression )
-  model = RandomForestClassifier()
-
-  # Define the parameter grid for tuning
-  param_grid = {
-    'n_estimators': [50, 100, 200],
-    'max_depth': [None, 10, 20, 30],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4]
-  }
-
-  # Create the GridSearchCV object
-  grid_search = GridSearchCV(model, param_grid, cv=5, scoring='accuracy')  # Use appropriate scoring for your task
-
-  # Fit the grid search to your data
-  grid_search.fit(x_train_transformed, y_train_transformed)
-
-  # Get the best parameters
-  best_params = grid_search.best_params_
-  print("Best Parameters:", best_params)
-
-  # Assess performance using cross-validation
-  cross_val_scores = cross_val_score(grid_search.best_estimator_, x_train_transformed, y_train_transformed, cv=5, scoring='accuracy')  # Use     
-  appropriate scoring
-  print("Cross-Validation Scores:", cross_val_scores)
-  print("Mean Cross-Validation Score:", cross_val_scores.mean())
-```
-
-```
-Cross-Validation Scores: [1.         1.         0.95555556 0.90909091 1.        ]
-Mean Cross-Validation Score: 0.972929292929293
-```
-
 <h2 id="Summary">Summary</h2>
 
-> In EDA we saw the inputs are highly correlated and that's why they are not very good at separating Y=0,1. The KMeans k2=0,1 worked well and it was not only giving us a better hue in the scatter plot but also matched well with Y=0,1.
+> We need to explore more on time series like GARCH.
 >
 > We can see some statistically significant features. It seems that financial factor and using other stock market prices to extracting patterns from the random walk is more useful.
 >
