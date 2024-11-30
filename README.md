@@ -293,7 +293,7 @@ Here's the updated table with an **Average Accuracy** column: for continuous pre
 >
 > We can see some statistically significant features. It seems that financial factor and using other stock market prices to extracting patterns from the random walk is more useful.
 >
->Because they are correlated to each other we need the help of PCA to evaluate effective feature variables and at the end, we saw that there are 11 to 13 such PCA features that separate the data well and, hence, effective.
+>Because the financial factors are correlated to each other we need the help of PCA to evaluate effective feature variables and at the end, we saw that there are 11 to 13 such PCA features that separate the data well and, hence, effective.
 >
 >The best regression and logistic regression model turns out to be the elastic net with even mixed with ridge and lasso with 31 zero coefficients. We are getting 80-100% accuracy here. The best model in training turns out to be the best in prediction as well. In the end we saw if we use "     " then we are in fact getting the best accuracy. I have used XGBoost, Neural Net, LSTM here.
 
