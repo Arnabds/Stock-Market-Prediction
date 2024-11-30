@@ -6,31 +6,38 @@ A foundational step in predicting the stock market of a company by leveraging st
 
 ## Table of Contents
 
-<li><a href="#Project-details">Project Details</a></li>
-<li><a href="#Pre-analysis">Pre-analysis</a></li>
+<h2 id="Table-of-Contents">Table of Contents</h2>
+
 <ul>
-    <li><a href="#Time-Series">Time Series</a></li>
-    <li><a href="#Financial-Factors">Financial Factors</a></li>
-<ul>
-<li><a href="#Data">Data</a></li>
-<ul>
-    <li><a href="#Data-Cleaning-and-Preparation">Data Cleaning and Preparation</a></li>
-<ul>
-<li><a href="#Computer-experiments-to-study-patterns">Computer Experiments to Study Patterns</a></li>
-<li><a href="#Project-instructions">Project Instructions</a></li>
-<ul>
-  <li><a href="#Steps">Steps</a>
-    <ul>
-        <li><a href="#EDA-and-Preprocessing">EDA and Preprocessing</a></li>
-        <li><a href="#Models">Models</a></li>
-        <li><a href="#Prediction">Prediction</a></li>
-        <li><a href="#Performance">Performance</a></li>
-    </ul>
-  </li>
+    <li><a href="#Project-details">Project Details</a></li>
+    <li><a href="#Pre-analysis">Pre-analysis</a>
+        <ul>
+            <li><a href="#Time-Series">Time Series</a></li>
+            <li><a href="#Financial-Factors">Financial Factors</a></li>
+        </ul>
+    </li>
+    <li><a href="#Data">Data</a>
+        <ul>
+            <li><a href="#Data-Cleaning-and-Preparation">Data Cleaning and Preparation</a></li>
+        </ul>
+    </li>
+    <li><a href="#Computer-experiments-to-study-patterns">Computer Experiments to Study Patterns</a></li>
+    <li><a href="#Project-instructions">Project Instructions</a>
+        <ul>
+            <li><a href="#Steps">Steps</a>
+                <ul>
+                    <li><a href="#EDA-and-Preprocessing">EDA and Preprocessing</a></li>
+                    <li><a href="#Models">Models</a></li>
+                    <li><a href="#Prediction">Prediction</a></li>
+                    <li><a href="#Performance">Performance</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><a href="#Summary">Summary</a></li>
+    <li><a href="#Things-to-answer-and-to-be-updated-next">Things to Answer and Update Next</a></li>
+    <li><a href="#References">References</a></li>
 </ul>
-<li><a href="#Summary">Summary</a></li>
-<li><a href="#Things-to-answer-and-to-be-updated-next">Things to Answer and Update Next</a></li>
-<li><a href="#References">References</a></li>
 
 ---
 
