@@ -13,6 +13,9 @@ A foundational step in predicting the stock market of a company by leveraging st
     <li><a href="#Financial-Factors">Financial Factors</a></li>
 <ul>
 <li><a href="#Data">Data</a></li>
+<ul>
+    <li><a href="#Data-Cleaning-and-Preparation">Data Cleaning and Preparation</a></li>
+<ul>
 <li><a href="#Computer-experiments-to-study-patterns">Computer Experiments to Study Patterns</a></li>
 <li><a href="#Project-instructions">Project Instructions</a></li>
 <ul>
@@ -20,7 +23,6 @@ A foundational step in predicting the stock market of a company by leveraging st
     <a href="#Steps">Steps</a>
     <ul>
         <li><a href="#EDA-and-Preprocessing">EDA and Preprocessing</a></li>
-        <li><a href="#Cluster-Analysis">Cluster Analysis</a></li>
         <li><a href="#Models">Models</a></li>
         <li><a href="#Prediction">Prediction</a></li>
         <li><a href="#Performance">Performance</a></li>
