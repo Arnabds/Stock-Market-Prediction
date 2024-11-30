@@ -1,8 +1,6 @@
 # Stock-Market-Prediction
 A foundational step in predicting the stock market of a company by leveraging stock market prices of other companies and related commodities.
-
-# Asset Monitoring and Predictive Maintenance
-### Sponsored by FPoliSolutions, LLC
+### Erdos Project
 
 ## Table of Contents
 
