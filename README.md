@@ -105,7 +105,7 @@ We have divided our project into 6 parts: ***EDA and Preprocessing, Cluster Anal
 
 
 
-<h3 id="EDA-and-Preprocessing">EDA and Preprocessing</h3>
+<h2 id="EDA-and-Preprocessing">EDA and Preprocessing</h2>
 
 ![Overall model with bollinger band](/images/Overall_model_with_bollinger_band.png)
 
@@ -114,7 +114,7 @@ This is the correlation plot with all the finally selected features.
 ![Correlation plot](/images/corr.png)
 
 
-<h3 id="Models">Models</h3>
+<h2 id="Models">Models</h2>
 We have fitted 4 models from linear regression, linear regression with PCA, linear logistic regression, linear logistic regression with PCA all with regularization, XGBoost, XGBoost PCA.
 ```
     
@@ -241,7 +241,7 @@ Unseen Test MSE (XGBoost): 0.023049184263072675
 Unseen Test MSE: 0.037972127935972814
 ```
 
-<h3 id="Prediction">Prediction</h3>
+<h2 id="Prediction">Prediction</h2>
 In all the model we got good results. Recall that it is a stock market data which tends to be whimsical. So it will be difficult to get the accurate prediction but we can observe the classification with some nice accuracy. Next, we evaluated performance with Pipelines fitting logistic regression along with regularization lasso, ridge, and elastic net. We varied the norm ratio as well and recorded our prediction accuracy. We have also checked our model with backtesting and forward validation. Here is the picture of some of our predictions. You will see that we can make simple regression stronger enough to make good predictions.
 
 
@@ -251,7 +251,7 @@ In all the model we got good results. Recall that it is a stock market data whic
 
 ![Regression](/images/Reg.png)
 
-<h3 id="Performance">Performance-Backtesting</h3>
+<h2 id="Performance">Performance-Backtesting</h2>
 
 Here's the updated table with an **Average Accuracy** column: for continuous prediction I have calculated accuracy based on next 7 days forecasting and for binary classification I forecasted for 3 days.
 
